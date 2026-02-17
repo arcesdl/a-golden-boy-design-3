@@ -159,6 +159,19 @@
   <div class="audio-container">
     <button class="close-modal" onclick="closeAudio()">×</button>
     <h3 class="audio-title">coordenadas</h3>
+    <div class="audio-preview">
+      <div class="spectrum" id="spectrum">
+        <div class="bars">
+          <!-- 20 bars -->
+          <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
+          <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
+          <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
+          <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </div>
+        <div class="playhead" id="playhead" aria-hidden="true"></div>
+      </div>
+    </div>
+
     <audio controls class="audio-player" id="audioPlayer">
       <source src="COORDENADAS_PREVIEW.wav" type="audio/wav">
       Tu navegador no soporta el elemento de audio.
