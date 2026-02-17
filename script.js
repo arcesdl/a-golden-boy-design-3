@@ -25,10 +25,11 @@ function createParticles() {
 }
 
 // Open audio modal
-function openAudio() {
+function openAudio(element) {
   const modal = document.getElementById('audioModal');
   const player = document.getElementById('audioPlayer');
   modal.classList.add('active');
+  if (element && element.classList) element.classList.add('playing');
   setTimeout(() => {
     player.play();
   }, 300);
@@ -42,6 +43,19 @@ function closeAudio() {
   player.currentTime = 0;
   modal.classList.remove('active');
 }
+
+// Toggle playing class on click for archive items (start animation on click)
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.archive-item').forEach(item => {
+    item.addEventListener('click', function(e) {
+      // avoid toggling when clicking overlay controls inside modal
+      if (e.target.closest('.archive-overlay')) {
+        // toggle playing class
+        this.classList.toggle('playing');
+      }
+    });
+  });
+});
 
 // Close modal with ESC key
 document.addEventListener('keydown', function(e) {
