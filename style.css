@@ -299,11 +299,11 @@ body {
 }
 
 .gallery-btn.prev {
-  left: 10px;
+  left: 30px;
 }
 
 .gallery-btn.next {
-  right: 10px;
+  right: 30px;
 }
 
 .gallery-btn:hover {
@@ -314,7 +314,7 @@ body {
 }
 
 .archive-item {
-  flex: 0 0 400px;
+  flex: 0 0 480px;
   display: none;
   aspect-ratio: 1;
 }
@@ -363,7 +363,6 @@ body {
 .archive-item:hover {
   transform: translateY(-15px) scale(1.05);
   filter: drop-shadow(0 15px 40px rgba(198, 168, 91, 0.4));
-  animation: itemFloat 6s ease-in-out infinite;
 }
 
 .archive-item.playing {
