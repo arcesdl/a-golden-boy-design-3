@@ -52,7 +52,7 @@ function moveGallery(direction) {
   // Remove exit class after animation completes
   setTimeout(() => {
     currentItem.classList.remove('active', 'exit');
-  }, 500);
+  }, 600);
 }
 
 // Touch/Swipe handling for gallery
