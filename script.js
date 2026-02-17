@@ -109,6 +109,15 @@ document.addEventListener('DOMContentLoaded', function() {
     playhead.style.transform = 'translateX(calc(100% - 3px))';
   });
 
+  // Toggle playback when clicking the spectrum
+  spectrum.addEventListener('click', () => {
+    if (player.paused) {
+      player.play();
+    } else {
+      player.pause();
+    }
+  });
+
   // Reset playhead when modal closed via closeAudio
   const originalClose = closeAudio;
   window.closeAudio = function() {
