@@ -31,21 +31,27 @@ function moveGallery(direction) {
   const gallery = document.getElementById('gallery');
   const items = gallery.querySelectorAll('.archive-item');
   
-  // Hide current item
-  items[currentGalleryIndex].classList.remove('active');
+  // Add exit animation to current item
+  items[currentGalleryIndex].classList.add('exit');
   
-  // Update index
-  currentGalleryIndex += direction;
-  
-  // Loop around
-  if (currentGalleryIndex >= items.length) {
-    currentGalleryIndex = 0;
-  } else if (currentGalleryIndex < 0) {
-    currentGalleryIndex = items.length - 1;
-  }
-  
-  // Show new item
-  items[currentGalleryIndex].classList.add('active');
+  // Update index after a short delay
+  setTimeout(() => {
+    // Remove exit class and active class
+    items[currentGalleryIndex].classList.remove('active', 'exit');
+    
+    // Update index
+    currentGalleryIndex += direction;
+    
+    // Loop around
+    if (currentGalleryIndex >= items.length) {
+      currentGalleryIndex = 0;
+    } else if (currentGalleryIndex < 0) {
+      currentGalleryIndex = items.length - 1;
+    }
+    
+    // Show new item
+    items[currentGalleryIndex].classList.add('active');
+  }, 250);
 }
 
 // Touch/Swipe handling for gallery
