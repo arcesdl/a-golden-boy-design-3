@@ -600,6 +600,27 @@ body {
   100% { left: 120%; opacity: 0; }
 }
 
+/* Hidden by default; appear when playing */
+.spectrum {
+  opacity: 0;
+  transform: translateY(6px) scaleY(0.98);
+  transition: opacity 360ms cubic-bezier(.2,.9,.2,1), transform 360ms cubic-bezier(.2,.9,.2,1);
+}
+
+.spectrum .playhead {
+  opacity: 0;
+  transition: opacity 240ms ease;
+}
+
+.spectrum.playing {
+  opacity: 1;
+  transform: translateY(0) scaleY(1);
+}
+
+.spectrum.playing .playhead {
+  opacity: 1;
+}
+
 
 .close-modal {
   position: absolute;
