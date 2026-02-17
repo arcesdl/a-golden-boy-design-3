@@ -325,47 +325,51 @@ body {
   width: 480px;
   height: 480px;
   aspect-ratio: 1;
-  top: 50%;
+  bottom: -100px;
   left: 50%;
-  transform: translate(calc(-50% + 300px), -50%) scale(0.4);
-  opacity: 0.5;
+  transform: translateX(-50%) scale(0.3);
+  opacity: 0;
   pointer-events: none;
   z-index: 1;
-  background: rgba(255, 0, 0, 0.5);
 }
 
 .archive-item.active {
   opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
+  transform: translateX(-50%) translateY(-50%) scale(1);
+  top: 50%;
+  bottom: auto;
   pointer-events: auto;
   z-index: 10;
-  animation: stackAppear 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation: vinylEnter 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 .archive-item.active.exit {
-  animation: stackExit 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards !important;
-  pointer-events: none;
+  animation: vinylExit 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards !important;
 }
 
-@keyframes stackAppear {
+@keyframes vinylEnter {
   from {
     opacity: 0;
-    transform: translate(calc(-50% + 300px), -50%) scale(0.4);
+    transform: translateX(-50%) translateY(0) scale(0.3);
+    bottom: -100px;
   }
   to {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
+    transform: translateX(-50%) translateY(-50%) scale(1);
+    top: 50%;
   }
 }
 
-@keyframes stackExit {
+@keyframes vinylExit {
   from {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
+    transform: translateX(-50%) translateY(-50%) scale(1);
+    top: 50%;
   }
   to {
     opacity: 0;
-    transform: translate(calc(-50% - 300px), -50%) scale(0.4);
+    transform: translateX(-50%) translateY(0) scale(0.3);
+    bottom: -100px;
   }
 }
 
