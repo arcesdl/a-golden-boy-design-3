@@ -273,7 +273,7 @@ body {
   width: 100%;
   margin-bottom: 5rem;
   position: relative;
-  min-height: 550px;
+  min-height: 450px;
   perspective: 1200px;
 }
 
@@ -325,9 +325,9 @@ body {
   width: 480px;
   height: 480px;
   aspect-ratio: 1;
-  bottom: -100px;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%) scale(0.3);
+  transform: translate(calc(-50% + 300px), -50%) scale(0.4);
   opacity: 0;
   pointer-events: none;
   z-index: 1;
@@ -335,41 +335,39 @@ body {
 
 .archive-item.active {
   opacity: 1;
-  transform: translateX(-50%) translateY(-50%) scale(1);
-  top: 50%;
-  bottom: auto;
+  transform: translate(-50%, -50%) scale(1);
   pointer-events: auto;
   z-index: 10;
-  animation: vinylEnter 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 .archive-item.active.exit {
   animation: vinylExit 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards !important;
+  pointer-events: none;
+}
+
+.archive-item.active:not(.exit) {
+  animation: vinylEnter 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 @keyframes vinylEnter {
   from {
     opacity: 0;
-    transform: translateX(-50%) translateY(0) scale(0.3);
-    bottom: -100px;
+    transform: translate(calc(-50% + 300px), -50%) scale(0.4);
   }
   to {
     opacity: 1;
-    transform: translateX(-50%) translateY(-50%) scale(1);
-    top: 50%;
+    transform: translate(-50%, -50%) scale(1);
   }
 }
 
 @keyframes vinylExit {
   from {
     opacity: 1;
-    transform: translateX(-50%) translateY(-50%) scale(1);
-    top: 50%;
+    transform: translate(-50%, -50%) scale(1);
   }
   to {
     opacity: 0;
-    transform: translateX(-50%) translateY(0) scale(0.3);
-    bottom: -100px;
+    transform: translate(calc(-50% - 300px), -50%) scale(0.4);
   }
 }
 
@@ -979,7 +977,7 @@ body {
   /* Mobile gallery adjustments */
   .gallery {
     flex-direction: column;
-    min-height: 500px;
+    min-height: 400px;
     gap: 1.5rem;
     position: relative;
   }
@@ -988,9 +986,9 @@ body {
     position: absolute;
     width: 300px;
     height: 300px;
-    bottom: -80px;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%) scale(0.3);
+    transform: translate(calc(-50% + 200px), -50%) scale(0.4);
   }
 
   .gallery-btn {
