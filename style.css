@@ -196,13 +196,15 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
-}
 
-.brand-name {
-  font-family: 'Mostera', sans-serif;
-  font-weight: normal;
-  font-size: clamp(2.5rem, 6vw, 5rem);
+.subtitle {
+  color: rgba(198,168,91,0.95);
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem; /* increased */
+  text-align: center;
+  max-width: 900px;
+  line-height: 1.4;
+}
   letter-spacing: 0.25em;
   text-align: center;
   text-shadow: 0 0 40px rgba(198, 168, 91, 0.5);
@@ -290,29 +292,36 @@ body {
   50% { text-shadow: 0 0 50px rgba(198, 168, 91, 0.7); }
 }
 
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2.5rem;
-  max-width: 1400px;
-  width: 100%;
-  margin-bottom: 5rem;
+.email-form {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 2.2rem;
+  align-items: center;
 }
 
-.archive-item {
-  position: relative;
-  aspect-ratio: 1;
+.email-input {
+  padding: 0.9rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(198,168,91,0.12);
+  background: rgba(255,255,255,0.02);
+  color: var(--gold);
+  outline: none;
+  min-width: 320px;
+  font-size: 1.05rem;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.6) inset;
+}
+
+.submit-btn {
+  background: linear-gradient(180deg,var(--gold),var(--gold-glow));
+  color: var(--black);
+  border: none;
+  padding: 0.9rem 1.25rem;
+  border-radius: 999px;
   cursor: pointer;
-  overflow: hidden;
-  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-  background: transparent !important;
-  border: none !important;
-  outline: none !important;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 10px 30px rgba(198,168,91,0.18);
 }
-
-.archive-item:nth-child(1) { animation-delay: 0s; }
-.archive-item:nth-child(2) { animation-delay: 0.2s; }
-.archive-item:nth-child(3) { animation-delay: 0.4s; }
 .archive-item:nth-child(4) { animation-delay: 0.6s; }
 .archive-item:nth-child(5) { animation-delay: 0.8s; }
 .archive-item:nth-child(6) { animation-delay: 1s; }
@@ -790,20 +799,22 @@ body {
   font-family: 'Mostera', sans-serif;
   font-weight: normal;
   font-size: clamp(1.5rem, 3vw, 2rem);
-  letter-spacing: 0.2em;
-  margin-bottom: 2.5rem;
-  text-shadow: 0 0 25px rgba(198, 168, 91, 0.5);
-  animation: titlePulse 3s ease-in-out infinite;
+.social-title {
+  font-size: 1.15rem;
+  letter-spacing: 0.14em;
+  margin-bottom: 0.6rem;
 }
 
 .social-links {
   display: flex;
+  gap: 1rem;
   justify-content: center;
-  gap: 2rem;
-  flex-wrap: wrap;
+  align-items: center;
 }
 
-.social-link {
+.social-link svg { width: 34px; height: 34px; filter: drop-shadow(0 6px 18px rgba(198,168,91,0.45)); }
+
+.social-link { color: var(--gold); }
   color: var(--gold);
   font-size: 2rem;
   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
