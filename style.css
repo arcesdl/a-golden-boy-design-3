@@ -331,20 +331,17 @@ body {
   opacity: 0;
   pointer-events: none;
   z-index: 1;
-  visibility: hidden;
 }
 
 .archive-item.active {
   animation: stackAppear 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
   pointer-events: auto;
   z-index: 10;
-  visibility: visible;
 }
 
 .archive-item.active.exit {
   animation: stackExit 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards !important;
   pointer-events: none;
-  visibility: visible;
 }
 
 @keyframes stackAppear {
