@@ -979,7 +979,7 @@ body {
   /* Mobile gallery adjustments */
   .gallery {
     flex-direction: column;
-    min-height: 350px;
+    min-height: 500px;
     gap: 1.5rem;
     position: relative;
   }
@@ -988,9 +988,9 @@ body {
     position: absolute;
     width: 300px;
     height: 300px;
-    top: 50%;
+    bottom: -80px;
     left: 50%;
-    transform: translate(calc(-50% + 200px), -50%) scale(0.4);
+    transform: translateX(-50%) scale(0.3);
   }
 
   .gallery-btn {
