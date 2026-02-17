@@ -299,11 +299,11 @@ body {
 }
 
 .gallery-btn.prev {
-  left: -70px;
+  left: 10px;
 }
 
 .gallery-btn.next {
-  right: -70px;
+  right: 10px;
 }
 
 .gallery-btn:hover {
@@ -314,8 +314,9 @@ body {
 }
 
 .archive-item {
-  flex: 0 0 280px;
+  flex: 0 0 400px;
   display: none;
+  aspect-ratio: 1;
 }
 
 .archive-item.active {
@@ -941,9 +942,9 @@ body {
   }
 
   .archive-item {
-    flex: 0 0 250px;
+    flex: 0 0 300px;
     width: 100%;
-    max-width: 280px;
+    max-width: 350px;
   }
 
   .gallery-btn {
