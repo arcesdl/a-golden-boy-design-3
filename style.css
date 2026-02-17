@@ -367,6 +367,15 @@ body {
   filter: grayscale(0.6) brightness(0.5) drop-shadow(0 0 30px rgba(198, 168, 91, 0.4));
 }
 
+/* Use Coolvetica for overlay action text (Abrir / Bloqueado) */
+.archive-overlay .overlay-text {
+  font-family: 'Coolvetica', 'CoolveticaHv', sans-serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
 .lock-icon {
   width: 60px;
   height: 70px;
