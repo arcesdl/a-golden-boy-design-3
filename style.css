@@ -303,9 +303,8 @@ body {
   position: relative;
   aspect-ratio: 1;
   cursor: pointer;
-  overflow: visible;
-  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-  animation: itemFloat 6s ease-in-out infinite;
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
   background: transparent !important;
   border: none !important;
   outline: none !important;
@@ -328,6 +327,11 @@ body {
 .archive-item:hover {
   transform: translateY(-15px) scale(1.05);
   filter: drop-shadow(0 15px 40px rgba(198, 168, 91, 0.4));
+  animation: itemFloat 6s ease-in-out infinite;
+}
+
+.archive-item.playing {
+  animation: itemFloat 6s ease-in-out infinite;
 }
 
 .archive-img {
@@ -365,6 +369,11 @@ body {
 
 .archive-item:hover .archive-img {
   filter: grayscale(0.6) brightness(0.5) drop-shadow(0 0 30px rgba(198, 168, 91, 0.4));
+  transform: scale(1.035);
+}
+
+.archive-img {
+  transition: transform 0.35s ease, filter 0.35s ease;
 }
 
 /* Use Coolvetica for overlay action text (Abrir / Bloqueado) */
@@ -376,16 +385,25 @@ body {
   text-transform: uppercase;
 }
 
-.lock-icon {
-  width: 60px;
-  height: 70px;
-  margin-bottom: 1rem;
-  position: relative;
-  animation: lockShake 0.5s ease-in-out;
+
+/* Minimal overlay icons */
+.overlay-icon {
+  width: 48px;
+  height: 48px;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+  display: block;
+  filter: drop-shadow(0 0 10px rgba(198,168,91,0.85));
 }
 
-.archive-item:hover .lock-icon {
-  animation: lockShake 0.5s ease-in-out;
+.icon-lock,
+.icon-unlock {
+  stroke: currentColor;
+  fill: none;
+}
+
+.icon-unlock {
+  transform-origin: center;
 }
 
 @keyframes lockShake {
@@ -394,62 +412,9 @@ body {
   75% { transform: translateX(5px) rotate(5deg); }
 }
 
-.lock-icon::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 35px;
-  height: 25px;
-  border: 3px solid var(--gold);
-  border-bottom: none;
-  border-radius: 20px 20px 0 0;
-  filter: drop-shadow(0 0 10px rgba(198, 168, 91, 0.8));
-}
-
-.lock-icon::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 50px;
-  height: 45px;
-  background: var(--gold);
-  border-radius: 8px;
-  filter: drop-shadow(0 0 15px rgba(198, 168, 91, 0.8));
-}
-
-.lock-keyhole {
-  position: absolute;
-  bottom: 15px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 8px;
-  height: 8px;
-  background: var(--black);
-  border-radius: 50%;
-  z-index: 1;
-}
-
-.lock-keyhole::after {
-  content: '';
-  position: absolute;
-  top: 6px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 4px;
-  height: 10px;
-  background: var(--black);
-}
-
-.unlock-icon {
-  font-size: 3rem;
-  color: var(--gold);
-  margin-bottom: 0.5rem;
-  filter: drop-shadow(0 0 20px rgba(198, 168, 91, 1));
-  animation: unlockPulse 1s ease-in-out infinite;
+.archive-item:hover .overlay-icon,
+.archive-item.playing .overlay-icon {
+  animation: lockShake 0.5s ease-in-out;
 }
 
 @keyframes unlockPulse {
