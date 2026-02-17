@@ -273,7 +273,7 @@ body {
   width: 100%;
   margin-bottom: 5rem;
   position: relative;
-  min-height: 400px;
+  min-height: 550px;
   perspective: 1200px;
 }
 
@@ -328,9 +328,10 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(calc(-50% + 300px), -50%) scale(0.4);
-  opacity: 0;
+  opacity: 0.5;
   pointer-events: none;
   z-index: 1;
+  background: rgba(255, 0, 0, 0.5);
 }
 
 .archive-item.active {
