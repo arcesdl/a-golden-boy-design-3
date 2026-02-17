@@ -371,17 +371,6 @@ body {
   }
 }
 
-.archive-item {
-  position: relative;
-  aspect-ratio: 1;
-  cursor: pointer;
-  overflow: hidden;
-  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-  background: transparent !important;
-  border: none !important;
-  outline: none !important;
-}
-
 .archive-item:nth-child(1) { animation-delay: 0s; }
 .archive-item:nth-child(2) { animation-delay: 0.2s; }
 .archive-item:nth-child(3) { animation-delay: 0.4s; }
