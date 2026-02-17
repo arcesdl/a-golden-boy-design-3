@@ -15,41 +15,9 @@
 }
 
 @font-face {
-  font-family: 'Coolvetica';
-  src: url('fonts/Coolvetica Rg.otf') format('opentype');
+  font-family: 'Summer Dream Sans';
+  src: url('fonts/summer_dream_sans/Summer Dream Sans DEMO .ttf') format('truetype');
   font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'CoolveticaItalic';
-  src: url('fonts/Coolvetica Rg It.otf') format('opentype');
-  font-weight: normal;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'CoolveticaCondensed';
-  src: url('fonts/Coolvetica Rg Cond.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'CoolveticaCram';
-  src: url('fonts/Coolvetica Rg Cram.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'CoolveticaHv';
-  src: url('fonts/Coolvetica Hv Comp.otf') format('opentype');
-  font-weight: bold;
   font-style: normal;
   font-display: swap;
 }
@@ -73,7 +41,7 @@ html {
 body {
   background: var(--black);
   color: var(--gold);
-  font-family: 'Coolvetica', sans-serif;
+  font-family: 'Summer Dream Sans', sans-serif;
   overflow-x: hidden;
 }
 
@@ -291,12 +259,79 @@ body {
 }
 
 .gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 2.5rem;
   max-width: 1400px;
   width: 100%;
   margin-bottom: 5rem;
+  position: relative;
+  min-height: 400px;
+}
+
+.gallery-nav {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.gallery-btn {
+  width: 50px;
+  height: 50px;
+  background: rgba(198, 168, 91, 0.2);
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  color: var(--gold);
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  pointer-events: all;
+  position: absolute;
+}
+
+.gallery-btn.prev {
+  left: -70px;
+}
+
+.gallery-btn.next {
+  right: -70px;
+}
+
+.gallery-btn:hover {
+  background: var(--gold);
+  color: var(--black);
+  transform: scale(1.1);
+  box-shadow: 0 0 30px rgba(198, 168, 91, 0.6);
+}
+
+.archive-item {
+  flex: 0 0 280px;
+  display: none;
+}
+
+.archive-item.active {
+  display: block;
+  animation: itemAppear 0.5s ease-out;
+}
+
+@keyframes itemAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .archive-item {
@@ -376,9 +411,9 @@ body {
   transition: transform 0.35s ease, filter 0.35s ease;
 }
 
-/* Use Coolvetica for overlay action text (Abrir / Bloqueado) */
+/* Use Summer Dream Sans for overlay action text (Abrir / Bloqueado) */
 .archive-overlay .overlay-text {
-  font-family: 'Coolvetica', 'CoolveticaHv', sans-serif;
+  font-family: 'Summer Dream Sans', sans-serif;
   font-size: 1.05rem;
   letter-spacing: 0.12em;
   color: var(--gold);
@@ -638,7 +673,7 @@ body {
   justify-content: center;
   transition: all 0.3s ease;
   border-radius: 50%;
-  font-family: 'Coolvetica', sans-serif;
+  font-family: 'Summer Dream Sans', sans-serif;
 }
 
 .close-modal:hover {
@@ -682,7 +717,7 @@ body {
 }
 
 .subtitle {
-  font-family: 'Coolvetica', sans-serif;
+  font-family: 'Summer Dream Sans', sans-serif;
   font-weight: normal;
   font-size: clamp(0.9rem, 1.8vw, 1.2rem);
   letter-spacing: 0.08em;
@@ -714,7 +749,7 @@ body {
   border-radius: 50px;
   padding: 1rem 2rem;
   color: var(--gold);
-  font-family: 'Coolvetica', sans-serif;
+  font-family: 'Summer Dream Sans', sans-serif;
   font-size: 1rem;
   letter-spacing: 0.05em;
   width: 320px;
@@ -740,7 +775,7 @@ body {
   border-radius: 50px;
   padding: 1rem 2.5rem;
   color: var(--gold);
-  font-family: 'Coolvetica', sans-serif;
+  font-family: 'Summer Dream Sans', sans-serif;
   font-weight: normal;
   font-size: 0.95rem;
   letter-spacing: 0.15em;
@@ -866,7 +901,7 @@ body {
 }
 
 .copyright {
-  font-family: 'Coolvetica', sans-serif;
+  font-family: 'Summer Dream Sans', sans-serif;
   font-size: 0.9rem;
   letter-spacing: 0.12em;
   opacity: 0.7;
@@ -881,9 +916,55 @@ body {
 }
 
 @media (max-width: 768px) {
+  /* Hide spectrum on mobile */
+  .spectrum {
+    display: none !important;
+  }
+
+  /* Center audio container on mobile */
+  .audio-container {
+    width: 95%;
+    padding: 2rem 1.5rem;
+  }
+
+  .audio-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Mobile gallery adjustments */
   .gallery {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
+    flex-direction: column;
+    min-height: auto;
+    gap: 1.5rem;
+    position: relative;
+  }
+
+  .archive-item {
+    flex: 0 0 250px;
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .gallery-btn {
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
+    position: static;
+  }
+
+  .gallery-btn.prev,
+  .gallery-btn.next {
+    position: static;
+  }
+
+  .gallery-nav {
+    position: static;
+    width: auto;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem 0 0;
   }
 
   .email-form {

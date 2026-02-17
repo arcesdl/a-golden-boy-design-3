@@ -23,9 +23,12 @@
 </section>
 
 <section class="archives-section">
-  <div class="gallery">
+  <div class="gallery" id="gallery">
+    <div class="gallery-nav">
+      <button class="gallery-btn prev" onclick="moveGallery(-1)" aria-label="Anterior">‹</button>
+    </div>
     
-    <div class="archive-item" data-unlocked="true" onclick="openAudio(this)">
+    <div class="archive-item active" data-unlocked="true" onclick="openAudio(this)">
       <img src="images/coordenadas.png" alt="Archivo Bloqueado" class="archive-img">
       <div class="archive-overlay">
         <svg class="overlay-icon icon-unlock" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
@@ -109,7 +112,10 @@
         <div class="overlay-text">PROXIMAMENTE</div>
       </div>
     </div>
-    
+
+    <div class="gallery-nav">
+      <button class="gallery-btn next" onclick="moveGallery(1)" aria-label="Siguiente">›</button>
+    </div>
   </div>
 </section>
 

@@ -24,6 +24,62 @@ function createParticles() {
   }
 }
 
+// Gallery navigation
+let currentGalleryIndex = 0;
+
+function moveGallery(direction) {
+  const gallery = document.getElementById('gallery');
+  const items = gallery.querySelectorAll('.archive-item');
+  
+  // Hide current item
+  items[currentGalleryIndex].classList.remove('active');
+  
+  // Update index
+  currentGalleryIndex += direction;
+  
+  // Loop around
+  if (currentGalleryIndex >= items.length) {
+    currentGalleryIndex = 0;
+  } else if (currentGalleryIndex < 0) {
+    currentGalleryIndex = items.length - 1;
+  }
+  
+  // Show new item
+  items[currentGalleryIndex].classList.add('active');
+}
+
+// Touch/Swipe handling for gallery
+let touchStartX = 0;
+let touchEndX = 0;
+
+document.addEventListener('DOMContentLoaded', function() {
+  const gallery = document.getElementById('gallery');
+  
+  gallery.addEventListener('touchstart', function(e) {
+    touchStartX = e.changedTouches[0].screenX;
+  }, false);
+  
+  gallery.addEventListener('touchend', function(e) {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  }, false);
+});
+
+function handleSwipe() {
+  const swipeThreshold = 50;
+  const difference = touchStartX - touchEndX;
+  
+  if (Math.abs(difference) > swipeThreshold) {
+    if (difference > 0) {
+      // Swipe left - show next item
+      moveGallery(1);
+    } else {
+      // Swipe right - show previous item
+      moveGallery(-1);
+    }
+  }
+}
+
 // Open audio modal
 function openAudio(element) {
   const modal = document.getElementById('audioModal');
