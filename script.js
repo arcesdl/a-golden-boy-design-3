@@ -30,28 +30,29 @@ let currentGalleryIndex = 0;
 function moveGallery(direction) {
   const gallery = document.getElementById('gallery');
   const items = gallery.querySelectorAll('.archive-item');
+  const currentItem = items[currentGalleryIndex];
+  
+  // Update index
+  currentGalleryIndex += direction;
+  
+  // Loop around
+  if (currentGalleryIndex >= items.length) {
+    currentGalleryIndex = 0;
+  } else if (currentGalleryIndex < 0) {
+    currentGalleryIndex = items.length - 1;
+  }
+  
+  const nextItem = items[currentGalleryIndex];
   
   // Add exit animation to current item
-  items[currentGalleryIndex].classList.add('exit');
+  currentItem.classList.add('exit');
+  // Add active class to next item to start entry animation
+  nextItem.classList.add('active');
   
-  // Update index after a short delay
+  // Remove exit class after animation completes
   setTimeout(() => {
-    // Remove exit class and active class
-    items[currentGalleryIndex].classList.remove('active', 'exit');
-    
-    // Update index
-    currentGalleryIndex += direction;
-    
-    // Loop around
-    if (currentGalleryIndex >= items.length) {
-      currentGalleryIndex = 0;
-    } else if (currentGalleryIndex < 0) {
-      currentGalleryIndex = items.length - 1;
-    }
-    
-    // Show new item
-    items[currentGalleryIndex].classList.add('active');
-  }, 250);
+    currentItem.classList.remove('active', 'exit');
+  }, 500);
 }
 
 // Touch/Swipe handling for gallery

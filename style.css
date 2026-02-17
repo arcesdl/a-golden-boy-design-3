@@ -321,17 +321,17 @@ body {
 
 .archive-item.active {
   display: block;
-  animation: itemAppear 0.5s ease-out;
+  animation: itemAppear 0.5s ease-in-out forwards;
 }
 
 .archive-item.exit {
-  animation: itemExit 0.5s ease-out;
+  animation: itemExit 0.5s ease-in-out forwards;
 }
 
 @keyframes itemAppear {
   from {
     opacity: 0;
-    transform: translateX(100px) scale(0.95);
+    transform: translateX(250px) scale(0.9);
   }
   to {
     opacity: 1;
@@ -346,7 +346,7 @@ body {
   }
   to {
     opacity: 0;
-    transform: translateX(-100px) scale(0.95);
+    transform: translateX(-250px) scale(0.9);
   }
 }
 
