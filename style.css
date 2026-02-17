@@ -1,74 +1,65 @@
 @font-face {
   font-family: 'Mostera';
-  src: url('/fonts/Mostera.otf') format('opentype');
+  src: url('fonts/Mostera.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
-  
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'Starlight Romance';
-  src: url('fonts/Starlight-Romance.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  
-}
-
-@font-face {
-  font-family: 'Coolvetica';
-  src: url('fonts/Coolvetica-Rg.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
- 
-}
-
-@font-face {
-  font-family: 'Coolvetica';
-  src: url('fonts/Coolvetica-Rg It.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-@font-face {
-  font-family: 'Coolvetica';
-  src: url('fonts/Coolvetica-Rg Cram.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-  
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-@font-face {
-  font-family: 'Coolvetica';
-  src: url('fonts/Coolvetica-Rg Cond.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-  
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-@font-face {
-  font-family: 'Coolvetica';
-  src: url('fonts/Coolvetica-Hv Comp.otf') format('opentype');
+  src: url('fonts/starlight_romance/Starlight Romance.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
+}
+
+@font-face {
+  font-family: 'Coolvetica';
+  src: url('fonts/Coolvetica Rg.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'CoolveticaItalic';
+  src: url('fonts/Coolvetica Rg It.otf') format('opentype');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'CoolveticaCondensed';
+  src: url('fonts/Coolvetica Rg Cond.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'CoolveticaCram';
+  src: url('fonts/Coolvetica Rg Cram.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'CoolveticaHv';
+  src: url('fonts/Coolvetica Hv Comp.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 :root {
   --black: #0b0b0b;
   --gold: #c6a85b;
