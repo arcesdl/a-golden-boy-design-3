@@ -208,40 +208,8 @@ document.addEventListener('DOMContentLoaded', function() {
 // Initialize particles on load
 createParticles();
 
-// Floating circle with mouse following (with inertia) - desktop only
-let circleX = window.innerWidth - 80;
-let circleY = window.innerHeight - 80;
-let targetX = circleX;
-let targetY = circleY;
-const ease = 0.1;
-
+// Floating circle toggle functionality (no mouse following)
 const floatingCircle = document.getElementById('floatingCircle');
-const isMobile = window.matchMedia("(max-width: 768px)").matches;
-
-function updateCirclePosition() {
-  // Only follow mouse on desktop
-  if (!isMobile) {
-    // Add inertia/easing to the movement
-    circleX += (targetX - circleX) * ease;
-    circleY += (targetY - circleY) * ease;
-    
-    if (floatingCircle) {
-      floatingCircle.style.left = `${circleX}px`;
-      floatingCircle.style.top = `${circleY}px`;
-      floatingCircle.style.transform = 'translate(-50%, -50%)';
-    }
-  }
-  
-  requestAnimationFrame(updateCirclePosition);
-}
-
-// Update target position on mouse move (desktop only)
-if (!isMobile) {
-  document.addEventListener('mousemove', (e) => {
-    targetX = e.clientX;
-    targetY = e.clientY;
-  });
-}
 
 // Toggle social popup on click
 if (floatingCircle) {
@@ -259,8 +227,3 @@ document.addEventListener('click', (e) => {
     floatingCircle.classList.remove('active');
   }
 });
-
-// Start the animation loop
-if (!isMobile) {
-  updateCirclePosition();
-}
