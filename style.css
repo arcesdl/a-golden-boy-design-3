@@ -277,50 +277,42 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   gap: 2.5rem;
   max-width: 1400px;
   width: 100%;
   margin-bottom: 5rem;
   position: relative;
-  min-height: 450px;
+  min-height: 650px;
   perspective: 1200px;
   transform-style: preserve-3d;
 }
 
-.gallery-nav {
+.gallery-nav-bottom {
   position: absolute;
-  width: 100%;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 0 1rem;
-  pointer-events: none;
   z-index: 10;
 }
 
 .gallery-btn {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   background: rgba(198, 168, 91, 0.2);
   border: 2px solid var(--gold);
   border-radius: 50%;
   color: var(--gold);
-  font-size: 1.5rem;
+  font-size: 2rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
   pointer-events: all;
-  position: absolute;
-}
-
-.gallery-btn.prev {
-  left: 30px;
-}
-
-.gallery-btn.next {
-  right: 30px;
 }
 
 .gallery-btn:hover {
@@ -338,7 +330,7 @@ body {
   width: 600px;
   height: 600px;
   aspect-ratio: 1;
-  top: 50%;
+  top: 35%;
   left: 50%;
   transform: translate(-50%, -50%) scale(var(--stack-scale)) translateZ(var(--stack-z)) rotateX(var(--stack-tilt));
   opacity: 0;
@@ -565,11 +557,23 @@ body {
   width: 100%;
   margin-bottom: 1.5rem;
 }
+
+.audio-date {
+  font-family: 'Summer Dream Sans', sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  text-align: center;
+  margin-top: 1rem;
+  color: var(--gold);
+  opacity: 0.8;
+}
+
 .spectrum {
   position: relative;
-  height: 40px; /* shorter height */
-  width: 50%; /* half width of container */
-  margin: 0 auto; /* center horizontally */
+  height: 60px;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
   background: rgba(0,0,0,0.06);
   border: 1px solid rgba(198,168,91,0.08);
   border-radius: 8px;
@@ -579,20 +583,23 @@ body {
 .spectrum .bars {
   display: flex;
   height: 100%;
+  width: 100%;
   align-items: flex-end;
-  padding: 0 8px;
-  gap: 6px;
+  padding: 0 12px;
+  gap: 8px;
+  justify-content: space-between;
 }
 .spectrum .bar {
   display: inline-block;
-  width: 6px;
+  flex: 1;
+  max-width: 12px;
   height: 100%;
   background: linear-gradient(180deg, rgba(255,220,140,1), rgba(198,168,91,0.9));
-  border-radius: 3px;
+  border-radius: 4px;
   transform-origin: bottom;
   transform: scaleY(0.28);
   animation: barAnim 1.6s ease-in-out infinite;
-  animation-play-state: paused; /* start paused */
+  animation-play-state: paused;
   box-shadow: 0 0 10px rgba(198,168,91,0.25);
 }
 /* stagger bars */
@@ -680,12 +687,12 @@ body {
 .spectrum {
   opacity: 0;
   transform: translateY(6px) scaleY(0.98);
-  transition: opacity 360ms cubic-bezier(.2,.9,.2,1), transform 360ms cubic-bezier(.2,.9,.2,1);
+  transition: opacity 500ms cubic-bezier(.2,.9,.2,1), transform 500ms cubic-bezier(.2,.9,.2,1);
 }
 
 .spectrum .playhead {
   opacity: 0;
-  transition: opacity 240ms ease;
+  transition: opacity 400ms ease;
 }
 
 .spectrum.playing {
@@ -781,22 +788,38 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  margin-bottom: 3.5rem;
+  margin-bottom: 2rem;
   width: 100%;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
-.powered-by {
+.email-form.hidden {
+  opacity: 0;
+  transform: scale(0.9);
+  pointer-events: none;
+  position: absolute;
+}
+
+.thank-you-message {
   font-family: 'Summer Dream Sans', sans-serif;
-  font-size: clamp(0.85rem, 1.2vw, 1rem);
-  letter-spacing: 0.15em;
+  font-size: clamp(1rem, 1.5vw, 1.3rem);
+  letter-spacing: 0.1em;
   text-align: center;
   margin-bottom: 3rem;
-  opacity: 0.8;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
   color: var(--gold);
-  text-shadow: 0 0 10px rgba(198, 168, 91, 0.4);
+  text-shadow: 0 0 20px rgba(198, 168, 91, 0.6);
+  pointer-events: none;
+}
+
+.thank-you-message.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .email-input {
@@ -1133,16 +1156,26 @@ body {
 @media (max-width: 768px) {
   /* Make spectrum visible and responsive on mobile */
   .spectrum {
-    width: 85% !important;
-    height: 35px !important;
+    width: 100% !important;
+    height: 60px !important;
+    max-width: 90% !important;
+    margin: 0 auto !important;
   }
   
   .spectrum .bars {
     gap: 4px;
+    justify-content: space-between;
+    padding: 0 10px;
+    width: 100%;
   }
   
   .spectrum .bar {
-    width: 4px;
+    flex: 1;
+    max-width: 10px;
+  }
+  
+  .audio-date {
+    font-size: 0.85rem;
   }
 
   /* Floating circle on mobile */
@@ -1185,16 +1218,17 @@ body {
   /* Mobile gallery adjustments */
   .gallery {
     flex-direction: column;
-    min-height: 500px;
+    min-height: 600px;
     gap: 1.5rem;
     position: relative;
+    padding-bottom: 100px;
   }
 
   .archive-item {
     position: absolute;
     width: 380px;
     height: 380px;
-    top: 50%;
+    top: 40%;
     left: 50%;
     --stack-scale: 0.78;
     --stack-z: -110px;
@@ -1203,24 +1237,17 @@ body {
   }
 
   .gallery-btn {
-    width: 50px;
-    height: 50px;
-    font-size: 1.3rem;
+    width: 55px;
+    height: 55px;
+    font-size: 1.5rem;
   }
 
-  .gallery-btn.prev {
-    left: 10px;
-  }
-  
-  .gallery-btn.next {
-    right: 10px;
-  }
-
-  .gallery-nav {
+  .gallery-nav-bottom {
     position: absolute;
+    bottom: 20px;
     width: 100%;
-    top: 50%;
-    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
   }
 
   .email-form {

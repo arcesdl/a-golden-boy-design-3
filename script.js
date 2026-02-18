@@ -227,3 +227,44 @@ document.addEventListener('click', (e) => {
     floatingCircle.classList.remove('active');
   }
 });
+
+// Email form submission handler
+document.addEventListener('DOMContentLoaded', function() {
+  const emailForm = document.getElementById('emailForm');
+  const thankYouMessage = document.getElementById('thankYouMessage');
+  
+  if (emailForm && thankYouMessage) {
+    emailForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const formData = new FormData(emailForm);
+      
+      try {
+        // Enviar el formulario a Formspree
+        await fetch(emailForm.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+        
+        // Ocultar el formulario
+        emailForm.classList.add('hidden');
+        
+        // Mostrar el mensaje de agradecimiento
+        setTimeout(() => {
+          thankYouMessage.classList.add('show');
+        }, 200);
+        
+      } catch (error) {
+        console.error('Error:', error);
+        // Aún así mostrar el mensaje de agradecimiento
+        emailForm.classList.add('hidden');
+        setTimeout(() => {
+          thankYouMessage.classList.add('show');
+        }, 200);
+      }
+    });
+  }
+});

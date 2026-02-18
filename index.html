@@ -23,10 +23,6 @@
 
 <section class="archives-section">
   <div class="gallery" id="gallery">
-    <div class="gallery-nav">
-      <button class="gallery-btn prev" onclick="moveGallery(-1)" aria-label="Anterior">‹</button>
-    </div>
-    
     <div class="archive-item active" data-unlocked="true" onclick="openAudio(this)">
       <img src="images/coordenadas.png" alt="Archivo Bloqueado" class="archive-img">
       <div class="archive-overlay">
@@ -112,7 +108,7 @@
       </div>
     </div>
 
-    <div class="gallery-nav">
+    <div class="gallery-nav-bottom">
       <button class="gallery-btn next" onclick="moveGallery(1)" aria-label="Siguiente">›</button>
     </div>
   </div>
@@ -121,12 +117,14 @@
 <section class="footer-section">
   <p class="subtitle">ARCE vuelve cuando antes lo esperes,<br>Enterate antes que todo el mundo...</p>
   
-  <form class="email-form" action="https://formspree.io/f/xdalzzee" method="POST">
+  <form class="email-form" id="emailForm" action="https://formspree.io/f/xdalzzee" method="POST">
     <input type="email" name="email" class="email-input" placeholder="tu email" required>
     <button type="submit" class="submit-btn">Unete</button>
   </form>
   
-  <p class="powered-by">Powered by Bstudios</p>
+  <div class="thank-you-message" id="thankYouMessage">
+    <p>gracias! ahora vas a ser el primero en saberlo todo.</p>
+  </div>
 
   <div class="social-section" style="display: none;">
     <h3 class="social-title">arce sdl</h3>
@@ -177,6 +175,7 @@
         </div>
         <div class="playhead" id="playhead" aria-hidden="true"></div>
       </div>
+      <p class="audio-date">xx/02/2025</p>
     </div>
 
     <audio class="audio-player" id="audioPlayer">
