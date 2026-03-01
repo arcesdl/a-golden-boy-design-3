@@ -90,20 +90,17 @@ function handleSwipe() {
 // Open audio modal
 function openAudio(element) {
   const modal = document.getElementById('audioModal');
-  const player = document.getElementById('audioPlayer');
+  if (!modal) return;
   modal.classList.add('active');
   if (element && element.classList) element.classList.add('playing');
-  setTimeout(() => {
-    player.play();
-  }, 300);
 }
 
 // Close audio modal
 function closeAudio() {
   const modal = document.getElementById('audioModal');
-  const player = document.getElementById('audioPlayer');
-  player.pause();
-  player.currentTime = 0;
+  const activeItem = document.querySelector('.archive-item.playing');
+  if (activeItem) activeItem.classList.remove('playing');
+  if (!modal) return;
   modal.classList.remove('active');
 }
 
@@ -136,72 +133,6 @@ document.addEventListener('DOMContentLoaded', function() {
         closeAudio();
       }
     });
-  }
-});
-
-// Spectrum playhead control
-document.addEventListener('DOMContentLoaded', function() {
-  const player = document.getElementById('audioPlayer');
-  const spectrum = document.getElementById('spectrum');
-  const playhead = document.getElementById('playhead');
-
-  if (!player || !spectrum || !playhead) return;
-
-  // When metadata loaded, set playhead animation duration
-  player.addEventListener('loadedmetadata', () => {
-    const dur = Math.max(1, Math.floor(player.duration));
-    // set animation with exact duration
-    playhead.style.animation = `playheadMove ${player.duration}s linear forwards`;
-    playhead.style.animationPlayState = 'paused';
-  });
-
-  player.addEventListener('play', () => {
-    spectrum.classList.add('playing');
-    playhead.style.animationPlayState = 'running';
-  });
-
-  player.addEventListener('pause', () => {
-    spectrum.classList.remove('playing');
-    playhead.style.animationPlayState = 'paused';
-  });
-
-  player.addEventListener('ended', () => {
-    spectrum.classList.remove('playing');
-    playhead.style.animationPlayState = 'paused';
-    // move playhead to end
-    playhead.style.transform = 'translateX(calc(100% - 3px))';
-  });
-
-  // Toggle playback when clicking the spectrum
-  spectrum.addEventListener('click', () => {
-    if (player.paused) {
-      player.play();
-    } else {
-      player.pause();
-    }
-  });
-
-  // Reset playhead when modal closed via closeAudio
-  const originalClose = closeAudio;
-  window.closeAudio = function() {
-    try {
-      player.pause();
-      player.currentTime = 0;
-      spectrum.classList.remove('playing');
-      // reset animation
-      playhead.style.animation = 'none';
-      // force reflow
-      void playhead.offsetWidth;
-      playhead.style.transform = 'translateX(0)';
-      // reassign animation so loadedmetadata can set it again if needed
-      if (player.duration && player.duration > 0) {
-        playhead.style.animation = `playheadMove ${player.duration}s linear forwards`;
-        playhead.style.animationPlayState = 'paused';
-      }
-    } finally {
-      // call original behavior to hide modal
-      originalClose();
-    }
   }
 });
 
